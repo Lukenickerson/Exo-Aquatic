@@ -17,7 +17,7 @@
 			"name" : 	"Jac-Suit"
 			,"description" : "A simple diving suit. Looks suspciously like a submarine."
 			,"max" : 	{ "depth" : 100, "health" : 1 }
-			,"active" : { "depth" : 10 }
+			,"active" : { "depth" : 12 }
 			,"startingGear"	: true
 		}
 		,"AT1" : {
@@ -51,7 +51,14 @@
 			,"description" : "This device will help you dive and climb with more speed."
 			,"active" : 	{ "depth" : 10 }
 			,"cost" : 30
-		}		
+		}
+		,"DD1" : {
+			"name" : 	"Deep Drive I"
+			,"description" : "An advanced solid state drive for holding sensitive scientific results."
+			,"delta" : { "energy" : -0.1 }
+			,"max" : 	{ "data" : 100, "discoveries" : 2 }
+			,"cost" : 60
+		}			
 		,"BAT1" : {
 			"name" : 	"Battery I"
 			,"description" : "A simple battery pack that provides extra energy capacity."
@@ -64,15 +71,7 @@
 			,"max" : 	{ "transmissionRange" : 100 }
 			,"active" : { "transmission" : 1 }
 			,"cost" : 100
-		}		
-
-		,"DD1" : {
-			"name" : 	"Deep Drive I"
-			,"description" : "An advanced solid state drive for holding sensitive scientific results."
-			,"delta" : { "energy" : -0.1 }
-			,"max" : 	{ "data" : 100, "discoveries" : 2 }
-			,"cost" : 200
-		}		
+		}			
 		,"BAT2" : {
 			"name" : 	"Battery II"
 			,"description" : "A simple battery pack that provides extra energy capacity."

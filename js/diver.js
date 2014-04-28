@@ -296,7 +296,7 @@ var ExoAquaticGameClass = function (dataDeliveryObj)
 			this.att.finalDelta.o2 += 10;
 			this.att.finalDelta.energy += 10;
 			this.att.finalDelta.health += 1;
-			activeBonus.analyze += 1;
+			activeBonus.analyze += 2;
 			activeBonus.transmission += 1;
 		};
 		var ab = 0;
@@ -371,7 +371,7 @@ var ExoAquaticGameClass = function (dataDeliveryObj)
 				if (this.game.current.discoveries <= 0) {
 					actionNameFeedback = "No discoveries to send";
 					actionName = "";
-				} else if (!this.isAtHQ) {
+				} else if (!this.isAtHQ && this.game.current.depth > this.att.max.transmissionRange) {
 					actionNameFeedback = "Too far from the HQ ship at the surface to transmit";
 					actionName = "";
 				}
