@@ -66,6 +66,7 @@ var ExoAquaticGameClass = function (dataDeliveryObj)
 		if ((o.loopIteration % o.loopModulusAction) == 0) {
 
 			o.redrawMonitor();
+			o.checkMovement();
 
 		}		
 		
@@ -77,7 +78,7 @@ var ExoAquaticGameClass = function (dataDeliveryObj)
 			o.checkDeath();
 			o.checkFishSwimBy();
 			o.checkAtHQ();
-			o.checkMovement();
+			
 		}		
 		
 		// Less Frequent than every second...
@@ -196,7 +197,7 @@ var ExoAquaticGameClass = function (dataDeliveryObj)
 	{
 		if (this.game.current.depth <= 0) {
 			this.game.current.depth = 0;
-			this.setCurrentAction("");
+			if (this.currentAction == "Ascending") this.setCurrentAction("");
 		} else if (this.game.current.depth >= this.att.max.depth) {
 			this.game.current.health -= 1;
 		}
@@ -208,23 +209,23 @@ var ExoAquaticGameClass = function (dataDeliveryObj)
 		}
 		if (this.game.current.data > this.att.max.data) {
 			this.game.current.data = this.att.max.data;
-			this.setCurrentAction("");
+			if (this.currentAction == "Scanning") this.setCurrentAction("");
 		} else if (this.game.current.data < 0) {
 			this.game.current.data = 0;
-			this.setCurrentAction("");
+			if (this.currentAction == "Analyzing") this.setCurrentAction("");
 		}
 		if (this.game.current.discoveries > this.att.max.discoveries) {
 			this.game.current.discoveries = this.att.max.discoveries;
-			this.setCurrentAction("");
+			if (this.currentAction == "Analyzing") this.setCurrentAction("");
 		} else if (this.game.current.discoveries < 0) {
 			this.game.current.discoveries = 0;
-			this.setCurrentAction("");
+			if (this.currentAction == "Transmitting") this.setCurrentAction("");
 		}
 	}
 	
 	this.checkAtHQ = function ()
 	{
-		this.isAtHQ = (this.game.current.depth <= 10) ? true : false;
+		this.isAtHQ = (this.game.current.depth <= 15) ? true : false;
 		if (this.isAtHQ) {
 			this.$monitors.addClass("atHQ");
 			this.$controls.addClass("atHQ");
@@ -284,30 +285,44 @@ var ExoAquaticGameClass = function (dataDeliveryObj)
 	{
 		this.att.finalDelta = this.cloneDataObject(this.att.delta);
 		// If we're at HQ, then we get special values
+		var activeBonus = {
+			o2 : 0
+			,energy : 0
+			,health : 0
+			,analyze : 0
+			,transmission : 0
+		};
 		if (this.isAtHQ) {
 			this.att.finalDelta.o2 += 10;
 			this.att.finalDelta.energy += 10;
 			this.att.finalDelta.health += 1;
-			this.att.finalDelta.analyze += 1;
-			this.att.finalDelta.trasmission += 1;
-		}	
+			activeBonus.analyze += 1;
+			activeBonus.transmission += 1;
+		};
+		var ab = 0;
 
 		switch (this.currentAction) {
 			case "Scanning" :
 				this.att.finalDelta.data += this.att.active.scan;
 			break;
 			case "Analyzing" :
-				this.att.finalDelta.data -= this.att.active.analyze;
+				ab = (this.att.active.analyze + activeBonus.analyze);
+				console.log(ab);
+				this.att.finalDelta.data -= ab;
+				this.att.finalDelta.discoveries += this.roll1d((ab + 1)) - 1;
+				/*
 				var r = 100 - (this.att.active.analyze);
 				if (this.roll1d(r) == 1) {
 					this.att.finalDelta.discoveries += 1;
 				}
+				*/
 			break;
 			case "Transmitting" :
-				if (this.att.finalDelta.discoveries > 0) {
+				if (this.game.current.discoveries > 0) {
+					ab = (this.att.active.transmission + activeBonus.transmission);
 					// *** This calculation needs work...
-					this.att.finalDelta.discoveries -= this.att.active.transmission;
-					this.att.finalDelta.credits += this.att.active.transmission;
+					this.att.finalDelta.discoveries -= ab;
+					this.att.finalDelta.credits += ab;
 				}
 			break;
 			case "Repairing" :
@@ -342,7 +357,7 @@ var ExoAquaticGameClass = function (dataDeliveryObj)
 		switch (actionName) {
 			case "Scanning" :
 				if (this.isAtHQ) {
-					actionNameFeedback = "Too close to ship";
+					actionNameFeedback = "Too close to HQ ship";
 					actionName = "";
 				}
 			break;
@@ -368,6 +383,7 @@ var ExoAquaticGameClass = function (dataDeliveryObj)
 		}
 		var $controlButtons = this.$controls.find('button');
 		$controlButtons.removeClass("current");
+		console.log("Setting current action to " + actionName, actionNameFeedback);
 		this.currentAction = actionName;
 		this.$currentAction.fadeIn().html(actionNameFeedback);
 		if (!this.isLooping) alert("Game is paused.");
@@ -538,7 +554,7 @@ var ExoAquaticGameClass = function (dataDeliveryObj)
 			,credits	: 0		// investments
 			,scan		: 0		// dependent on scanner power
 			,analyze	: 0		// dependent on analysis cpu
-			,trasmission : 0	// dependent on comm software	
+			,transmission : 0	// dependent on comm software	
 		};
 		this.att.active = this.cloneDataObject(this.att.delta);
 		this.att.finalDelta = this.cloneDataObject(this.att.delta);
@@ -732,8 +748,12 @@ var ExoAquaticGameClass = function (dataDeliveryObj)
 		
 		$('.doTogglePause').click(function(e){		o.togglePause(); 	});
 		
-		$('.doQuit').click(function(e){			
+		$('.doQuit').click(function(e){		
 			window.location = 'http://www.ludumdare.com/compo/?author_name=deathray';
+		});
+		
+		$('.doGoToLatest').click(function(e){
+			window.location = 'http://deathraygames.com/play-online/exo-aquatic/';
 		});
 		
 
@@ -752,7 +772,7 @@ var ExoAquaticGameClass = function (dataDeliveryObj)
 			o.buyUpgrade( $target.data("upgradekey") );
 		});
 		
-		
+		/*
 		$doc.keydown(function(e){
 			//console.log("Key down - " + e.which);
 			switch(e.which) {
@@ -874,9 +894,7 @@ var ExoAquaticGameClass = function (dataDeliveryObj)
 			// but consider accessibility (eg. user may want to use keys to choose a radio button)
 			e.preventDefault();		
 		});	
-		
-		
-		
+		*/
 		
 	}
 	

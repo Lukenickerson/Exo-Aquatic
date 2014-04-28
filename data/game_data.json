@@ -8,7 +8,7 @@
 		"PILOT" : {
 			"name" : 	"P. Zissou"
 			,"description" : "The fearless leader of your expedition."
-			,"max" :	{ "health" : 1 }
+			,"max" :	{ "health" : 1, "discoveries" : 8 }
 			,"delta" : 	{	"o2"  : -0.5 }
 			,"active" : { "scan" : 1, "analyze"	: 1	}
 			,"startingGear"	: true
@@ -30,7 +30,7 @@
 			"name" : 	"Foot Drive"
 			,"description" : "A solid state drive that fits in a boot."
 			,"delta" : { "energy" : -0.01 }
-			,"max" : 	{ "energy" : 10, "data" : 10, "discoveries" : 1 }
+			,"max" : 	{ "energy" : 10, "data" : 10, "discoveries" : 2 }
 			,"startingGear"	: true
 		}
 		,"HD2" : {
@@ -38,13 +38,19 @@
 			,"description" : "Another solid state drive for your other boot."
 			,"delta" : 	{ "energy" : -0.01 }
 			,"max" : 	{ "energy" : 10, "data" : 10, "discoveries" : 1 }
-			,"cost" : 50
+			,"cost" : 20
 		}		
 		,"LITE1" : {
 			"name" : 	"Light 1"
 			,"description" : "A simple light will help in your searching."
 			,"active" : { "scan" : 10 }
-			,"cost" : 50
+			,"cost" : 30
+		}
+		,"BOOST" : {
+			"name" : 	"Booster I"
+			,"description" : "This device will help you dive and climb with more speed."
+			,"active" : 	{ "depth" : 10 }
+			,"cost" : 30
 		}		
 		,"BAT1" : {
 			"name" : 	"Battery I"
@@ -52,12 +58,14 @@
 			,"max" : 	{ "energy" : 100 }
 			,"cost" : 100
 		}
-		,"BOOST" : {
-			"name" : 	"Booster I"
-			,"description" : "This device will help you dive and climb with more speed."
-			,"active" : 	{ "depth" : 10 }
+		,"ANT1" : {
+			"name" : 	"Antennae I"
+			,"description" : "This device will allow you to transmit to HQ from farther away."
+			,"max" : 	{ "transmissionRange" : 100 }
+			,"active" : { "transmission" : 1 }
 			,"cost" : 100
-		}
+		}		
+
 		,"DD1" : {
 			"name" : 	"Deep Drive I"
 			,"description" : "An advanced solid state drive for holding sensitive scientific results."
@@ -77,12 +85,32 @@
 			,"max" : 	{ "depth" : 200, "health" : 2 }
 			,"cost" : 200
 		}
+		,"BOOST" : {
+			"name" : 	"Booster II"
+			,"description" : "This device will help you dive and climb with more speed."
+			,"active" : 	{ "depth" : 15 }
+			,"cost" : 240
+		}			
+		,"ANT2" : {
+			"name" : 	"Antennae II"
+			,"description" : "This device will allow you to transmit to HQ from farther away."
+			,"max" : 	{ "transmissionRange" : 300 }
+			,"active" : { "transmission" : 1 }
+			,"cost" : 400
+		}		
 		,"SONR1" : {
 			"name" : 	"Sonar I"
 			,"description" : "Simple sonar device that can help collect valuable data."
 			,"active" : { "scan" : 30 }
 			,"max" :	{ "data" : 10 }
-			,"cost" : 50
+			,"cost" : 100
+		}
+		,"LAB1" : {
+			"name" : 	"Portable Lab I"
+			,"description" : "Simple laboratory."
+			,"active" : { "analyze" : 2 }
+			,"max" :	{ "data" : 5, "discoveries" : 15 }
+			,"cost" : 100
 		}		
 		,"TICH" : {
 			"name" : 	"Tidal Charger"
@@ -95,7 +123,14 @@
 			,"description" : "Submarine allows you to dive even deeper."
 			,"delta" :	{ "depth" : 5 }
 			,"max" : 	{ "depth" : 300, "health" : 5 }
-			,"cost" : 200
+			,"cost" : 600
+		}
+		,"ANT3" : {
+			"name" : 	"Antennae III"
+			,"description" : "This device will allow you to transmit to HQ from farther away."
+			,"max" : 	{ "transmissionRange" : 500 }
+			,"active" : { "transmission" : 1 }
+			,"cost" : 600
 		}		
 		,"STARS" : {
 			"name" : 	"Starship"
