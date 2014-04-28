@@ -1,0 +1,112 @@
+{
+	"images" : {
+		"sub" 		: "Sub-Placeholder-3.png"
+		,"fish"		: "Fish-Placeholder-3.png"
+
+	}
+	,"upgrades" : {
+		"PILOT" : {
+			"name" : 	"P. Zissou"
+			,"description" : "The fearless leader of your expedition."
+			,"max" :	{ "health" : 1 }
+			,"delta" : 	{	"o2"  : -0.5 }
+			,"active" : { "scan" : 1, "analyze"	: 1	}
+			,"startingGear"	: true
+		}
+		,"JAC" : {
+			"name" : 	"Jac-Suit"
+			,"description" : "A simple diving suit. Looks suspciously like a submarine."
+			,"max" : 	{ "depth" : 100, "health" : 1 }
+			,"active" : { "depth" : 10 }
+			,"startingGear"	: true
+		}
+		,"AT1" : {
+			"name" : 	"Air Tank I"
+			,"description" : "A basic air tank."
+			,"max" : 	{ "o2" : 100 }
+			,"startingGear"	: true
+		}
+		,"HD1" : {
+			"name" : 	"Foot Drive"
+			,"description" : "A solid state drive that fits in a boot."
+			,"delta" : { "energy" : -0.01 }
+			,"max" : 	{ "energy" : 10, "data" : 10, "discoveries" : 1 }
+			,"startingGear"	: true
+		}
+		,"HD2" : {
+			"name" : 	"Other Foot Drive"
+			,"description" : "Another solid state drive for your other boot."
+			,"delta" : 	{ "energy" : -0.01 }
+			,"max" : 	{ "energy" : 10, "data" : 10, "discoveries" : 1 }
+			,"cost" : 50
+		}		
+		,"LITE1" : {
+			"name" : 	"Light 1"
+			,"description" : "A simple light will help in your searching."
+			,"active" : { "scan" : 10 }
+			,"cost" : 50
+		}		
+		,"BAT1" : {
+			"name" : 	"Battery I"
+			,"description" : "A simple battery pack that provides extra energy capacity."
+			,"max" : 	{ "energy" : 100 }
+			,"cost" : 100
+		}
+		,"BOOST" : {
+			"name" : 	"Booster I"
+			,"description" : "This device will help you dive and climb with more speed."
+			,"active" : 	{ "depth" : 10 }
+			,"cost" : 100
+		}
+		,"DD1" : {
+			"name" : 	"Deep Drive I"
+			,"description" : "An advanced solid state drive for holding sensitive scientific results."
+			,"delta" : { "energy" : -0.1 }
+			,"max" : 	{ "data" : 100, "discoveries" : 2 }
+			,"cost" : 200
+		}		
+		,"BAT2" : {
+			"name" : 	"Battery II"
+			,"description" : "A simple battery pack that provides extra energy capacity."
+			,"max" : 	{ "energy" : 200 }
+			,"cost" : 200
+		}
+		,"HELM1" : {
+			"name" : 	"Dive Helmet"
+			,"description" : "A pressurized helmet that will allow you to dive deeper."
+			,"max" : 	{ "depth" : 200, "health" : 2 }
+			,"cost" : 200
+		}
+		,"SONR1" : {
+			"name" : 	"Sonar I"
+			,"description" : "Simple sonar device that can help collect valuable data."
+			,"active" : { "scan" : 30 }
+			,"max" :	{ "data" : 10 }
+			,"cost" : 50
+		}		
+		,"TICH" : {
+			"name" : 	"Tidal Charger"
+			,"description" : "Use the waves to generate a small amount of electricity."
+			,"delta" : 	{ "energy" : 1 }
+			,"cost" : 1000
+		}
+		,"SUB1" : {
+			"name" : 	"Submarine"
+			,"description" : "Submarine allows you to dive even deeper."
+			,"delta" :	{ "depth" : 5 }
+			,"max" : 	{ "depth" : 300, "health" : 5 }
+			,"cost" : 200
+		}		
+		,"STARS" : {
+			"name" : 	"Starship"
+			,"description" : "With enough credits you can purchase the right to fly the startship to another planet."
+			,"cost" : 10000
+		}			
+	
+	
+	},
+	"achievements" : [
+	
+	
+	]
+}

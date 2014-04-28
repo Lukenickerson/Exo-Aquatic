@@ -1,0 +1,231 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Exo-Aquatic Deep Diving Web Game - Ludum Dare 29</title>
+	<!--- <meta name="viewport" content="width=device-width, initial-scale=1.0"> --->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link href='http://fonts.googleapis.com/css?family=Quicksand:400,700|Anonymous+Pro:400,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/waterworld.css" />	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+	
+</head>
+<body>
+
+	<header id="title"><h1>Exo-Aquatic</h1></header>
+	
+	<section id="splashScreen">
+		
+	</section>
+	
+	<section id="beginMenu" class="fullScreen menu">
+		
+		<!---
+		<div class="warning">
+			You're playing the Ludum Dare competition version of this game.
+			For a more complete experience, try the latest version.
+		</div>
+		--->
+		<button type="button" class="doContinueGame">Continue</button>
+		<button type="button" class="doNewGame cta">New</button>
+		<!--- <button type="button" class="openMenu" data-menu="instructions">Instructions</button> --->
+		<!--- <button type="button">Save Now</button> --->
+		<!--- <button type="button" class="openMenu" data-menu="options">Options</button> --->
+		<!--- <a href="https://twitter.com/share" class="twitter-share-button" data-via="deathraygames" data-size="large" data-related="deathraygames" data-hashtags="LD48">Tweet</a>	
+		--->
+		<button type="button" class="openMenu" data-menu="credits">Credits</button>
+		<button type="button" class="doQuit">Quit &amp; Leave</button>
+		
+
+	</section>
+	
+	<section id="instructionsMenu" class="fullScreen menu">
+		<h1>Instructions</h1>
+		{no instructions yet}
+		<button type="button" class="openMenu" data-menu="begin">Return</button>
+	</section>
+	
+	<section id="optionsMenu" class="fullScreen menu">
+		<h1>Options</h1>
+		<button type="button" class="doToggleSound">Toggle Sound</button>
+		<button type="button" class="doToggleMobile">Toggle Mobile Mode</button>
+		<button type="button" class="openMenu" data-menu="begin">Return</button>
+	</section>
+	
+	<section id="deathMenu" class="fullScreen menu">
+		<h1>You have failed!</h1>
+		<button type="button" class="doNewGame cta">New Game</button>
+		<button type="button" class="doQuit">Quit &amp; Leave</button>
+	</section>
+	
+	<section id="winMenu" class="fullScreen menu">
+		<h1>You WON!</h1>
+		<button type="button" class="doContinueGame cta">Continue</button>
+		<button type="button" class="doNewGame">New</button>
+		<button type="button" class="doQuit">Quit &amp; Leave</button>
+	</section>	
+	
+	<div id="game">
+		<section id="gameWorld" >
+			<div id="ship">
+			</div>
+			<div id="swimby">
+			</div>
+			<div id="character">
+			</div>
+		</section>
+		
+		<section id="controls" >
+			<h1>Controls</h1>
+			<span class="tip tip1">Go up towards the surface or down, deeper into the ocean</span>
+			<span class="tip tip3">Better data is found deeper in the ocean.</span>
+			<button type="button" data-action="Ascending" class="Ascending"><span>Ascend</span></button>
+			<button type="button" data-action="Descending" class="Descending"><span>Descend</span></button>
+			<span class="tip tip2">Scan the ocean to collect potentially valuable scientific data.</span>
+			<button type="button" data-action="Scanning" class="Scanning"><span>Scan</span></button>
+			<span class="tip tip4">Analyze your data to find scientific discoveries.</span>
+			<button type="button" data-action="Analyzing" class="Analyzing"><span>Analyze</span></button>
+			<span class="tip tip5">Transmit your discoveries back to HQ to earn credits.</span>
+			<button type="button" data-action="Transmitting" class="Transmitting"><span>Trasmit</span></button>
+		</section>
+		
+		<section id="monitors" >
+			<h1>Monitors</h1>
+			<div class="currentAction"></div>
+			<ul>
+				<li>Loading</li>
+				<!--
+				<li id="depthMonitor">
+					<div class="label"><span>Depth</span></div>
+					<div class="bar"><div></div></div>
+					<div class="numbers"></div>
+				</li>			
+				<li id="o2Monitor">
+					<div class="label"><span>O2</span></div>
+					<div class="bar"><div></div></div>
+					<div class="numbers"></div>
+				</li>
+				<li id="energyMonitor">
+					<div class="label"><span>Energy</span></div>
+					<div class="bar"><div></div></div>
+					<div class="numbers"></div>
+				</li>
+				<li id="healthMonitor">
+					<div class="label"><span>Health</span></div>
+					<div class="bar"><div></div></div>
+					<div class="numbers"></div>
+				</li>
+				<li id="dataMonitor">
+					<div class="label"><span>Data</span></div>
+					<div class="bar"><div></div></div>
+					<div class="numbers"></div>
+				</li>
+				<li id="discoveriesMonitor">
+					<div class="label"><span>Discoveries</span></div>
+					<div class="bar"><div></div></div>
+					<div class="numbers"></div>
+				</li>
+				<li id="creditsMonitor">
+					<div class="label"><span>Credits</span></div>
+					<div class="bar"><div></div></div>
+					<div class="numbers"></div>
+				</li>
+				-->
+			</ul>
+		</section>
+		
+		<section id="upgrades" >
+			<h1>Upgrades</h1>
+			<span class="tip tip6">Buy upgrades to speed up your progress</span>
+			<span class="tip tip7">Control the starship to complete the game!</span>
+			<ul>
+				<li>Loading</li>
+			</ul>
+		</section>
+		
+		<section id="achievements" >
+			<h1>Achievements</h1>
+			<ul>
+				<li>Loading</li>
+			</ul>
+		</section>
+		
+		<section id="other" >
+			<button type="button" class="doTogglePause">Pause</button>
+			<button type="button" class="openMenu" data-menu="begin">Main Menu</button>
+		</section>
+	</div>
+	
+	<section id="creditsMenu" class="fullScreen menu">
+		<h1>Credits</h1>
+		<div>
+		<p>
+			Design, Programming, and Graphics by Luke Nickerson 
+			(<a href="https://twitter.com/lukenickerson" target="_blank">@lukenickerson</a>, 
+			<a href="https://twitter.com/deathraygames" target="_blank">@deathraygames</a>).
+			Code is available on 
+			<a href="https://github.com/Lukenickerson" target="_blank">GitHub</a>.
+			<!---
+			<p>
+			<a href="https://twitter.com/deathraygames" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @deathraygames</a>
+			</p>
+			<iframe class="btn" frameborder="0" border="0" scrolling="no" allowtransparency="true" height="25" width="113" src="http://platform.tumblr.com/v1/follow_button.html?button_type=2&tumblelog=deathraygames&color_scheme=dark"></iframe>
+			--->
+	
+		</p>
+		<p>
+			<!--- Originally created for  --->
+			Created for
+			<a href="http://www.ludumdare.com/compo/" target="_blank" class="silk">Ludum Dare 29</a>,
+			a 48-hour competition with the theme "Beneath the Surface". 
+		</p>
+		<p>		
+			<!---
+			<a href="https://twitter.com/ludumdare" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @ludumdare</a>
+			--->
+			<!--- The 
+			<a href="http://deathraygames.com/play-online/miniLD50/">original version can be played</a>
+			if you don't mind fewer features.
+			--->
+		</p>
+		<p>
+			Fonts: 
+			<!---
+			<a href="http://www.fontsquirrel.com/fonts/Silkscreen" target="_blank" class="silk">Silkscreen from Font Squirrel</a>
+			and 
+			<a href="https://www.google.com/fonts/specimen/Voltaire" target="_blank">Voltaire from Google</a>
+			--->
+			<a href="https://www.google.com/fonts/" target="_blank">from Google</a>
+		</p>
+		</div>
+		<button type="button" class="openMenu" data-menu="begin">Return</button>
+	</section>
+
+
+
+	<script src="js/datadelivery.1.js"></script>
+	<script src="js/diver.js"></script>
+	<script>
+		$(document).ready(function(){
+			window.dataDelivery = new DataDeliveryClass("refData");
+			window.drg = new ExoAquaticGameClass(window.dataDelivery);
+			drg.setup();
+		});
+	</script>
+	
+<!--- Twitter Sharing --->
+<!---
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+--->
+<!--- Google Analytics --->	
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-7118348-1', 'deathraygames.com');
+  ga('send', 'pageview');
+</script>	
+	
+</body>
+</html>
