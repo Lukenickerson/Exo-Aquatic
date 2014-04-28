@@ -37,7 +37,7 @@
 			"name" : 	"Other Foot Drive"
 			,"description" : "Another solid state drive for your other boot."
 			,"delta" : 	{ "energy" : -0.01 }
-			,"max" : 	{ "energy" : 10, "data" : 10, "discoveries" : 1 }
+			,"max" : 	{ "energy" : 10, "data" : 10, "discoveries" : 2 }
 			,"cost" : 20
 		}		
 		,"LITE1" : {
@@ -46,7 +46,7 @@
 			,"active" : { "scan" : 10 }
 			,"cost" : 30
 		}
-		,"BOOST" : {
+		,"BOOST1" : {
 			"name" : 	"Booster I"
 			,"description" : "This device will help you dive and climb with more speed."
 			,"active" : 	{ "depth" : 10 }
@@ -85,7 +85,7 @@
 			,"max" : 	{ "depth" : 200, "health" : 2 }
 			,"cost" : 200
 		}
-		,"BOOST" : {
+		,"BOOST2" : {
 			"name" : 	"Booster II"
 			,"description" : "This device will help you dive and climb with more speed."
 			,"active" : 	{ "depth" : 15 }
